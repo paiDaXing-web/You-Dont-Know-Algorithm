@@ -6,7 +6,8 @@
     "start": "npm run dev",
     "dev": "dumi dev",
     "build": "dumi build",
-    "prepare": "husky install && dumi setup"
+    "prepare": "husky install && dumi setup",
+    "git": "sh git.sh"
   },
   "authors": [
     "maxueming"

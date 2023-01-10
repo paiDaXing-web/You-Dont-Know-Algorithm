@@ -1,22 +1,22 @@
 ---
 hero:
-  title: Site
+  title: Y-Algorithm
   description: You-Dont-Know-Algorithm
   actions:
-    - text: Hello
+    - text: 开始学习
       link: /
-    - text: World
+    - text: 开始挑战
       link: /
 features:
-  - title: Hello
+  - title: 动画讲解
     emoji: 💎
-    description: Put hello description here
-  - title: World
+    description: 复杂的算法使用动画讲解的方式，更容易理解
+  - title: 多语言
     emoji: 🌈
-    description: Put world description here
-  - title: '!'
+    description: 实现方式包括了java、javascript、python等常用语言
+  - title: '在线测试'
     emoji: 🚀
-    description: Put ! description here
+    description: 无需leecode刷题，在线demo，一对一测试，🔥🔥🔥 免费切好用🔥🔥🔥
 ---
 
 You-Dont-Know-Algorithm
