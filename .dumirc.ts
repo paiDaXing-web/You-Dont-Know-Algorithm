@@ -4,6 +4,7 @@ export default defineConfig({
   themeConfig: {
     name: 'Greenet',
     logo: 'https://raw.githubusercontent.com/paiDaXing-web/learning-materials-pdf/main/logo.png',
+    favicons: ['/favicon.ico'],
     nav: [
       { title: '算法', link: '/algorithm' },
       { title: '挑战', link: '/challenge' },
