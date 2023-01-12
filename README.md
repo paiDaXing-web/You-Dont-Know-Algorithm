@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/download.png" width="128" alt="logo" />
+  <img src="./assets/download.png" width="100%" alt="logo" />
   <h1>You-Dont-Know-Algorithm</h1>
   <p>About
 🔥🔥🔥 只有熟练掌握基础的数据结构与算法，才能对复杂问题迎刃有余（java，javascript，python）。🔥🔥🔥 本文包含动态规划、树、列表、队、栈等数据结构和算法，使用动画形式展示，并且包含demo贺测试题</p>
