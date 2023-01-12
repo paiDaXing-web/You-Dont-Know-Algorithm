@@ -1,6 +1,12 @@
 ---
-title: 01.不同的子序列
+title: 01.奇偶链表
 toc: content
+nav:
+  title: 算法
+  order: 3
+group:
+  title: 链表
+  order: 1
 ---
 
 ## 01.不同的子序列

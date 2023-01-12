@@ -4,7 +4,7 @@ hero:
   description: You-Dont-Know-Algorithm
   actions:
     - text: 开始学习
-      link: /
+      link: /algorithm/dynamic/subsequence
     - text: 开始挑战
       link: /
 features:
