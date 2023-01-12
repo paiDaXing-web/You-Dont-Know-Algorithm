@@ -27,8 +27,66 @@ export default defineConfig({
           children: [
             {
               link: '/algorithm/dynamic/subsequence',
-              title: '111',
+              title: '01.不同的子序列',
               order: 1,
+              frontmatter: { title: '' },
+            },
+            {
+              link: '/algorithm/dynamic/stockTiming',
+              title: '02.买卖股票的最佳时机 III',
+              order: 2,
+              frontmatter: { title: '' },
+            },
+            {
+              link: '/algorithm/dynamic/decoding',
+              title: '03.解码问题',
+              order: 3,
+              frontmatter: { title: '' },
+            },
+          ],
+        },
+        {
+          title: '栈相关',
+          children: [
+            {
+              link: '/algorithm/stack/reversePolish',
+              title: '01.逆波兰表达式求值',
+              order: 1,
+              frontmatter: { title: '' },
+            },
+            {
+              link: '/algorithm/stack/stockTiming',
+              title: '02.买卖股票的最佳时机 III',
+              order: 2,
+              frontmatter: { title: '' },
+            },
+            {
+              link: '/algorithm/stack/decoding',
+              title: '03.解码问题',
+              order: 3,
+              frontmatter: { title: '' },
+            },
+          ],
+        },
+        {
+          title: '链表相关',
+          children: [
+            {
+              link: '/algorithm/chainList/reversePolish',
+              title: '01.逆波兰表达式求值',
+              order: 1,
+              frontmatter: { title: '' },
+            },
+            {
+              link: '/algorithm/chainList/stockTiming',
+              title: '02.买卖股票的最佳时机 III',
+              order: 2,
+              frontmatter: { title: '' },
+            },
+            {
+              link: '/algorithm/chainList/decoding',
+              title: '03.解码问题',
+              order: 3,
               frontmatter: { title: '' },
             },
           ],

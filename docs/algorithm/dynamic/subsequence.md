@@ -1,12 +1,6 @@
 ---
 title: 01.不同的子序列
 toc: content
-nav:
-  title: 算法
-  order: 1
-group:
-  title: 动态规划
-  order: 1
 ---
 
 ## 01.不同的子序列

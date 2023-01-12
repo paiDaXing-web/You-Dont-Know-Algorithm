@@ -3,7 +3,6 @@ title: 01.逆波兰表达式求值
 toc: content
 nav:
   title: 算法
-  order: 2
 group:
   title: 栈
   order: 1
