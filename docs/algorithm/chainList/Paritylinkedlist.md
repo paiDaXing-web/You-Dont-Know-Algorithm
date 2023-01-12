@@ -1,11 +1,11 @@
 ---
-title: 01.逆波兰表达式求值
+title: 01.奇偶链表
 toc: content
 nav:
   title: 算法
-  order: 2
+  order: 3
 group:
-  title: 栈
+  title: 链表
   order: 1
 ---
 
