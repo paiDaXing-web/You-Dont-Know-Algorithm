@@ -4,9 +4,9 @@ hero:
   description: You-Dont-Know-Algorithm
   actions:
     - text: 开始学习
-      link: /algorithm/dynamic/subsequence
+      link: /datastr/structure
     - text: 开始挑战
-      link: /
+      link: /algorithm/dynamic/subsequence
 features:
   - title: 动画讲解
     emoji: 💎

@@ -94,6 +94,7 @@ export default defineConfig({
         },
       ],
     },
+    prefersColor: { default: 'dark', switch: true },
     footer: `Greenet MIT Licensed | Copyright © 2023-present
 <br />
 Powered by Greenet`,
