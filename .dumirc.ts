@@ -8,6 +8,7 @@ export default defineConfig({
   publicPath: '/algorithm/',
   themeConfig: {
     name: 'Greenet',
+    title: 'algorithm',
     logo: 'https://raw.githubusercontent.com/paiDaXing-web/learning-materials-pdf/main/logo.png',
     nav: [
       {
