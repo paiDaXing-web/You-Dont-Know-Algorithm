@@ -56,13 +56,13 @@ export default defineConfig({
             },
             {
               link: '/algorithm/stack/stockTiming',
-              title: '02.买卖股票的最佳时机 III',
+              title: '02.基本计算器',
               order: 2,
               frontmatter: { title: '' },
             },
             {
               link: '/algorithm/stack/decoding',
-              title: '03.解码问题',
+              title: '03.删除相邻重复项',
               order: 3,
               frontmatter: { title: '' },
             },
@@ -73,19 +73,19 @@ export default defineConfig({
           children: [
             {
               link: '/algorithm/chainList/reversePolish',
-              title: '01.逆波兰表达式求值',
+              title: '01.奇偶链表',
               order: 1,
               frontmatter: { title: '' },
             },
             {
               link: '/algorithm/chainList/stockTiming',
-              title: '02.买卖股票的最佳时机 III',
+              title: '02.删除链表重复元素II',
               order: 2,
               frontmatter: { title: '' },
             },
             {
               link: '/algorithm/chainList/decoding',
-              title: '03.解码问题',
+              title: '03.删除链表重复元素',
               order: 3,
               frontmatter: { title: '' },
             },

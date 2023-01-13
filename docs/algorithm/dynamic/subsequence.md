@@ -113,6 +113,122 @@ public int numDistinct(String s, String t) {
 }
 ```
 
+### 进阶与优化
+
+#### 1.常规二维动态规划
+
+![](../../../assets/algorithm/1.png)
+有了边界条件和状态转移方程，接下来我们只需要按列遍历 dp 数组即可，以示例 2 为例，过程如下图所示：
+
+![](../../../assets/algorithm/633.gif)
+
+常规二维动态规划代码如下，由于用例比较极端，这里 dp 数组必须用 unsigned long long 类型，否则会超出数据范围：
+(go)
+
+```go
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int m = s.size(), n = t.size();
+        if(m < n) return 0;
+        // dp[i][j]表示在s的前i个字符中，可以得到t的前j个字符的方案数
+        vector<vector<unsigned long long>> dp(m + 1, vector<unsigned long long>(n + 1));
+        // 边界条件:dp[i][0] = 1;
+        for(int i = 0;i <= m;i++){
+            dp[i][0] = 1;
+        }
+        // 按列遍历，i < j时方案数一定为0，因此只需要看二维数组对角线以下的部分
+        for(int j = 1;j <= n;j++){
+            for(int i = j; i <= m;i++){
+                dp[i][j] = dp[i-1][j];
+                if(s[i-1] == t[j-1]){
+                    dp[i][j] += dp[i-1][j-1];
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
+```
+
+初步优化
+从上面动图的箭头指向我们可以发现，
+
+`dp[i][j]` 只与其上方和左上方的结果有关，因此，除了红色背景的部分，对于下图中绿色背景的部分，也可以不参与遍历：
+
+![](../../../assets/algorithm/2.png)
+
+超出数据范围的运算大都出现在绿色部分，我们跳过了绿色部分的运算，优化后 dp 数组只需要存储 unsigned int 类型即可，极大地节省了空间：
+
+```js
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int m = s.size(), n = t.size();
+        if(m < n) return 0;
+        vector<vector<unsigned int>> dp(m + 1, vector<unsigned int>(n + 1));
+        for(int i = 0;i <= m;i++){
+            dp[i][0] = 1;
+        }
+        for(int j = 1;j <= n;j++){
+            // 压缩遍历空间
+            for(int i = j; i <= m - (n-j);i++){
+                dp[i][j] = dp[i-1][j];
+                if(s[i-1] == t[j-1]){
+                    dp[i][j] += dp[i-1][j-1];
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
+
+
+```
+
+#### 优化成一维数组
+
+不难看出，每一列参与运算部分的长度都是一样的，我们用一个一维数组（下图蓝色部分）来表示这个部分即可：
+
+![](../../../assets/algorithm/1672985237-JJTNEe-Snipaste_2023-01-06_14-06-40.png)
+
+```javascript
+class Solution {
+public:
+    int numDistinct(string s, string t) {
+        int m = s.size(), n = t.size();
+        if(m < n) return 0;
+        int sz = m - n + 1;
+        vector<unsigned int> dp(sz, 1);
+
+        for(int j = 1;j <= n;j++){
+            // 需要借助变量pre保存dp数组的前一个值
+            int pre = 0;
+            for(int i = j; i <= m - (n-j);i++){
+                if(s[i-1] == t[j-1])
+                    dp[i-j] = dp[i-j] + pre;
+                else
+                    dp[i-j] = pre;
+                pre = dp[i-j];
+            }
+        }
+        return dp[sz-1];
+    }
+};
+
+```
+
+优化后的时间复杂度：O(mn),空间复杂度：O(m−n)
+
+#### 最后附上各步优化的运行结果：
+
+- 常规解法：
+  ![](../../../assets/algorithm/1672985594-onCgev-01.png)
+- 第一步优化：
+  ![](../../../assets/algorithm/1672985600-YxoTFI-02.png)
+- 最终优化:
+  ![](../../../assets/algorithm/1672985608-TDdeVR-03.png)
+
 ### 示例代码
 
 #### javaScript
