@@ -20,9 +20,6 @@
       "prettier --write --no-error-on-unmatched-pattern"
     ]
   },
-  "dependencies": {
-    "prism-react-renderer": "^1.3.5"
-  },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
