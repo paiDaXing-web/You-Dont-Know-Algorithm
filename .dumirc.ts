@@ -14,7 +14,7 @@ export default defineConfig({
         link: '/algorithm/dynamic/subsequence',
       },
       { title: '挑战', link: '/challenge' },
-      { title: '数据结构', link: '/dataStructure' },
+      { title: '数据结构', link: '/datastr/structure' },
       {
         title: 'Github',
         link: 'https://github.com/paiDaXing-web/You-Dont-Know-Algorithm',
