@@ -7,6 +7,10 @@ specifiers:
   husky: ^8.0.1
   lint-staged: ^13.0.3
   prettier: ^2.7.1
+  prism-react-renderer: ^1.3.5
+
+dependencies:
+  prism-react-renderer: 1.3.5
 
 devDependencies:
   '@commitlint/cli': 17.4.1
@@ -1163,9 +1167,6 @@ packages:
     engines: {node: '>=8'}
     peerDependencies:
       react: '>=16.3.0'
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@babel/runtime': 7.18.9
       hoist-non-react-statics: 3.3.2
@@ -1177,9 +1178,6 @@ packages:
     engines: {node: '>=8'}
     peerDependencies:
       react: '>=16.3.0'
-    peerDependenciesMeta:
-      react:
-        optional: true
     dependencies:
       '@babel/runtime': 7.18.9
       hoist-non-react-statics: 3.3.2
@@ -8241,9 +8239,6 @@ packages:
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
       postcss: ^8.4
-    peerDependenciesMeta:
-      postcss:
-        optional: true
     dependencies:
       '@csstools/postcss-color-function': 1.1.1
       '@csstools/postcss-font-format-keywords': 1.0.1
@@ -8297,9 +8292,6 @@ packages:
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
       postcss: ^8.4
-    peerDependenciesMeta:
-      postcss:
-        optional: true
     dependencies:
       '@csstools/postcss-color-function': 1.1.1_postcss@8.4.21
       '@csstools/postcss-font-format-keywords': 1.0.1_postcss@8.4.21
@@ -8487,7 +8479,6 @@ packages:
     resolution: {integrity: sha512-IJ+MSwBWKG+SM3b2SUfdrhC+gu01QkV2KmRQgREThBfSQRoufqRfxfHUxpG1WcaFjP+kojcFyO9Qqtpgt3qLCg==}
     peerDependencies:
       react: '>=0.14.9'
-    dev: true
 
   /prism-themes/1.9.0:
     resolution: {integrity: sha512-tX2AYsehKDw1EORwBps+WhBFKc2kxfoFpQAjxBndbZKr4fRmMkv47XN0BghC/K1qwodB1otbe4oF23vUTFDokw==}
