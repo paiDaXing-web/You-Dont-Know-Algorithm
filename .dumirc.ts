@@ -4,7 +4,7 @@ export default defineConfig({
   favicons: [
     'https://raw.githubusercontent.com/paiDaXing-web/learning-materials-pdf/main/logo.png',
   ],
-
+  base: '/algorithm/',
   themeConfig: {
     name: 'Greenet',
     logo: 'https://raw.githubusercontent.com/paiDaXing-web/learning-materials-pdf/main/logo.png',
