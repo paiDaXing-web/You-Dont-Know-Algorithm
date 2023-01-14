@@ -17,6 +17,7 @@ export default defineConfig({
       },
       { title: '挑战', link: '/challenge' },
       { title: '数据结构', link: '/datastr/structure' },
+      { title: 'React中的算法', link: '/react/bit' },
       {
         title: 'Github',
         link: 'https://github.com/paiDaXing-web/You-Dont-Know-Algorithm',
