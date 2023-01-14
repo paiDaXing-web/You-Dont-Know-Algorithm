@@ -9,7 +9,7 @@ export default defineConfig({
   themeConfig: {
     name: 'Greenet',
     title: 'algorithm',
-    logo: 'https://log-1312496861.cos.ap-beijing.myqcloud.com/logobfa30ff13f7e43479930d76a83633a00.png',
+    logo: 'https://raw.githubusercontent.com/paiDaXing-web/learning-materials-pdf/main/logo.png',
     nav: [
       {
         title: '算法',
