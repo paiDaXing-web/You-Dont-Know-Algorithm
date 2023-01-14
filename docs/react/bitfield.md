@@ -1,8 +1,10 @@
 ---
-title: 位运算
+title: 1.位运算
+toc: content
+tocDepth: 4
 ---
 
-# React 算法之位运算
+# React 位运算
 
 网络上介绍位运算的文章非常多(如[MDN 上的介绍](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Bitwise_Operators)就很仔细).
 

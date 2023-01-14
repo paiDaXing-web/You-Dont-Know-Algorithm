@@ -1,8 +1,9 @@
 ---
-title: 栈操作
+title: 6.栈操作
+toc: content
 ---
 
-# React 算法之栈操作
+# React 中的栈操作
 
 ## 概念
 

@@ -1,8 +1,10 @@
 ---
-title: 调和算法
+title: 3.调和算法
+toc: content
+tocDepth: 4
 ---
 
-# React 算法之调和算法
+# React 中的调和算法
 
 ## 概念
 

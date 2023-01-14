@@ -1,8 +1,10 @@
 ---
-title: 深度优先遍历
+title: 2.深度优先遍历
+toc: content
+tocDepth: 4
 ---
 
-# React 算法之深度优先遍历
+# React 中的深度优先遍历
 
 对于树或图结构的搜索(或遍历)来讲, 分为深度优先(DFS)和广度优先(BFS).
 

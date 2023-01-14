@@ -1,8 +1,10 @@
 ---
-title: 堆排序
+title: 4.堆排序
+toc: content
+tocDepth: 4
 ---
 
-# React 算法之堆排序
+# React 中的堆排序
 
 ## 概念
 

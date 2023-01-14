@@ -1,8 +1,9 @@
 ---
-title: 链表操作
+title: 5.链表操作
+toc: content
 ---
 
-# React 算法之链表操作
+# React 中的链表操作
 
 ## 概念
 
