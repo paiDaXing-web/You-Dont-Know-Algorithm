@@ -217,11 +217,7 @@ def MorrisTraversal(root):
 
 最后我们讲解了双色遍历和 Morris 遍历。这两种方式可以作为了解，不掌握也没关系。
 
-另外，如果题目要求你实现迭代器（就是调用一次输出一个二叉树的值），那么前面讲的迭代的方式就非常适用了。比如这道题 [Binary Search Tree Iterator](https://binarysearch.com/problems/Binary-Search-Tree-Iterator)
-
-## 相关专题
-
-- [几乎刷完了力扣所有的树题，我发现了这些东西。。。](https://lucifer.ren/blog/2020/11/23/tree/)
+另外，如果题目要求你实现迭代器（就是调用一次输出一个二叉树的值），那么前面讲的迭代的方式就非常适用了。
 
 ## 相关题目
 
