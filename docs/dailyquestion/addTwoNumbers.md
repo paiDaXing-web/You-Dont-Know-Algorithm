@@ -107,6 +107,38 @@ var addTwoNumbers = function (l1, l2) {
 };
 ```
 
+```javascript
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function (l1, l2) {
+  const dummy = new ListNode(0);
+  let cur = dummy;
+  let carray = 0; // 进位记录
+  while (l1 || l2 || carray) {
+    let varl1 = l1?.val ?? 0;
+    let varl2 = l2?.val ?? 0;
+    let sum = varl1 + varl2 + carray;
+    carray = Math.floor(sum / 10);
+    cur.next = new ListNode(sum % 10);
+    cur = cur.next;
+    l1 = l1?.next ?? null;
+    l2 = l2?.next ?? null;
+  }
+
+  return dummy.next;
+};
+```
+
 java
 
 ```javascript
