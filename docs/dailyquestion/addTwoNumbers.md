@@ -62,6 +62,10 @@ tocDepth: 4
 - 创建新的结点，将新结点添加到链表中，并更新当前链表： `cur = cur.next`
 - 更新 `l1` 和 `l2`
 
+#### 图解
+
+![](../../assets/daily-question/images%20.gif)
+
 #### 复杂度
 
 - 时间复杂度:
