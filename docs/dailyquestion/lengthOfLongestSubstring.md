@@ -51,3 +51,56 @@ tocDepth: 4
 - 复杂度：时间复杂度 `O(n)`，`n` 是字符串的长度。空间复杂度是 `O(n)`，即 `set` 的空间，最差的情况是 `O(n)`
 
 ![1](../../assets/daily-question/lengthOfLongestSubstring.gif)
+
+代码
+
+```javascript
+var lengthOfLongestSubstring = function (s) {
+  const set = new Set(); //判断滑动窗口内是否有重复元素
+  let i = 0, //滑动窗口右边界
+    j = 0, //滑动窗口左边界
+    maxLength = 0;
+  if (s.length === 0) {
+    //极端情况
+    return 0;
+  }
+  for (i; i < s.length; i++) {
+    if (!set.has(s[i])) {
+      //当前元素不在set中 就加入set 然后更新最大长度，i++继续下一轮循环
+      set.add(s[i]);
+      maxLength = Math.max(maxLength, set.size);
+    } else {
+      //set中有重复元素不断让j++ 并删除窗口之外的元素 直到滑动窗口内没有重复的元素
+      while (set.has(s[i])) {
+        set.delete(s[j]);
+        j++;
+      }
+      set.add(s[i]); //放心将s[i]加入set中
+    }
+  }
+  return maxLength;
+};
+```
+
+- java
+
+```javascript
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        Set<Character> set = new HashSet<Character>();
+        int n = s.length();
+        int j = -1, ans = 0;
+        for (int i = 0; i < n; ++i) {
+            if (i != 0) {
+                set.remove(s.charAt(i - 1));
+            }
+            while (j + 1 < n && !set.contains(s.charAt(j + 1))) {
+                set.add(s.charAt(j + 1));
+                ++j;
+            }
+            ans = Math.max(ans, j - i + 1);
+        }
+        return ans;
+    }
+}
+```
