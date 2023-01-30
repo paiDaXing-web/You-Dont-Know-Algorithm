@@ -99,6 +99,26 @@ var lengthOfLongestSubstring = function (s) {
 };
 ```
 
+- Typescript
+
+```ts
+function lengthOfLongestSubstring(s: string): number {
+  // 滑动窗口+哈希表
+  let left = -1;
+  let maxLen = 0;
+  let hashTable = new Map();
+  for (let right = 0; right < s.length; right++) {
+    let cur = s.charAt(right);
+    if (hashTable.has(cur)) {
+      left = Math.max(left, hashTable.get(cur));
+    }
+    hashTable.set(cur, right);
+    maxLen = Math.max(maxLen, right - left);
+  }
+  return maxLen;
+}
+```
+
 - java
 
 ```javascript
@@ -120,4 +140,22 @@ class Solution {
         return ans;
     }
 }
+```
+
+- python3
+
+```javascript
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        i = j = res = 0
+        chars = set()
+        while i < len(s):
+            while s[i] in chars:
+                if s[j] in chars:
+                    chars.remove(s[j])
+                j += 1
+            chars.add(s[i])
+            res = max(res, i - j + 1)
+            i += 1
+        return res
 ```
