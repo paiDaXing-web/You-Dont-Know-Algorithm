@@ -32,7 +32,28 @@ tocDepth: 4
 
 在[`ES5`规范中](https://www.ecma-international.org/ecma-262/5.1/#sec-11.10), 对二进制位运算的说明如下:
 
+### 总结
+
+- `>>` 和`<<`
+  数 a 向右移一位，相当于将 a 除以 2，向下取整；数 a 向左移一位，相当于将 a 乘以 2
+
+```bash
+公示：
+a>>k===parseInt(a/(2^k))===Math.floor(a/(2^k))
+
+5>>1->Math.floor(5/2)
+
 ```
+
+- `^`
+
+```bash
+a = a + b;=== a ^= b;
+b = a - b;=== b ^= a;
+a = a - b;=== a ^= b;
+```
+
+```bash
 The production A : A @ B, where @ is one of the bitwise operators in the productions above, is evaluated as follows:
 1. Let lref be the result of evaluating A.
 2. Let lval be GetValue(lref).
