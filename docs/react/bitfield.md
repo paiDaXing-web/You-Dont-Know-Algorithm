@@ -53,6 +53,24 @@ b = a - b;=== b ^= a;
 a = a - b;=== a ^= b;
 ```
 
+- `&`
+  只要根据数的最后一位是 0 还是 1 来决定即可，为 0 就是偶数，为 1 就是奇数
+
+```bash
+if(0 == (a & 1)) {
+ //偶数
+}
+```
+
+- `~`
+  换符号将正数变成负数，负数变成正数
+
+```bash
+int reversal(int a) {
+  return ~a + 1;
+}
+```
+
 ```bash
 The production A : A @ B, where @ is one of the bitwise operators in the productions above, is evaluated as follows:
 1. Let lref be the result of evaluating A.
