@@ -52,6 +52,118 @@ tocDepth: 4
 
 归并的方法简单易懂，时间复杂度与空间复杂度均为线性复杂度`O(m+n)`。并不符合题目要求。但是这种方法也是接下来方法的关键。
 
+- 归并
+
+```javascript
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function (nums1, nums2) {
+  let m = nums1.length,
+    n = nums2.length,
+    cnt = 0;
+  let i = 0,
+    j = 0,
+    mid = (m + n + 1) >> 1;
+  // 使用滚动数组，记录最近的两个数字，空间复杂度为O(1)
+  let pre, cur;
+  // 归并排序模板
+  while (i < m || j < n) {
+    if (j == n || (i < m && nums1[i] <= nums2[j])) cur = nums1[i++];
+    else cur = nums2[j++];
+    cnt++;
+    // 每次可以获取到一个小数cur
+    if ((m + n) & 1) {
+      // 数字个数为奇数时，中位数为第 k/2+1个
+      // 例如 1 2 3 4 5，有五个数字，则中位数为第3个
+      if (cnt == mid) return cur;
+      // 数字个数为偶数时，中位数为第 k/2+1和k/2+2两数的平均数
+    } else if (cnt == mid + 1) return (pre + cur) / 2;
+    pre = cur;
+  }
+};
+```
+
+- javascript 双指针
+  因为是两个正序数组，所以使用双指针，顺序遍历(m+n)/2 次 即可找到中位数。
+
+```javascript
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function (nums1, nums2) {
+  /**2 双指针顺序查找中位数 */
+  let len = nums1.length + nums2.length;
+  let loop = Math.ceil(len / 2) - 1; // 找到中位数的循环次数
+  let o = (t = 0); // nums1,nums2的索引
+  let num1 = (num2 = 0);
+  let stopAtOne; // 标志在哪里停下来
+
+  if (len % 2 == 0) {
+    loop++; // 两个中位数，多循环一次
+  }
+
+  for (let i = 0; i <= loop; i++) {
+    if (nums1[o] <= nums2[t] || t == nums2.length) {
+      // num1值小 或 num2没有值了
+      o++;
+      stopAtOne = true;
+    } else {
+      t++;
+      stopAtOne = false;
+    }
+  }
+  if (stopAtOne) {
+    num1 = nums1[o - 1];
+  } else {
+    num1 = nums2[t - 1];
+  }
+
+  if (len % 2 == 1) return num1;
+  else {
+    // 两个中位数
+    if (stopAtOne) {
+      // 从nums1停，说明nums1[o-1]是已遍历中最大的数，接下来找到第二大的数就可以求中位数了
+      num2 =
+        o - 2 < 0 || nums1[o - 2] < nums2[t - 1] ? nums2[t - 1] : nums1[o - 2];
+    } else {
+      // 反之 nums2[t-1]最大
+      num2 =
+        t - 2 < 0 || nums2[t - 2] < nums1[o - 1] ? nums1[o - 1] : nums2[t - 2];
+    }
+    return (num1 + num2) / 2;
+  }
+
+  /**1 大容器合并两个数组*/
+  // let len = nums1.length + nums2.length;
+  // let sum = [];
+  // if (nums1.length == 0) {
+  //     sum = nums2;
+  // } else if (nums2.length == 0) {
+  //     sum = nums1;
+  // } else {
+  //     let i = j = 0;
+  //     for (let ii = 0; ii < len; ii++) {
+  //         if (nums1[i] < nums2[j] || j==nums2.length) {
+  //             sum[ii] = nums1[i]
+  //             i++;
+  //         } else{
+  //             sum[ii] = nums2[j];
+  //             j++;
+  //         }
+  //     }
+  // }
+
+  // let index = Math.ceil(len / 2) - 1;
+  // if (len % 2 == 1) return sum[index];
+  // return (sum[index] + sum[index + 1]) / 2;
+};
+```
+
 ### 解法二：二分查找
 
 如何让时间复杂度降为`O(log(m+n))`呢？一般涉及到 log 的时间复杂度，我们都会想到二分查找的方法。其实这道题也不例外。我们仔细观察下面的例子：
@@ -127,6 +239,160 @@ A 数组中比 `A[k/2]` 小的数有 `k/2-1 `个，`B` 数组中，`B[k/2] `比 
 
 时间复杂度：每进行一次循环，我们就减少 k/2 个元素，所以时间复杂度是 O(log(k)，而 k=(m+n)/2，所以最终的复杂也就是 O(log(m+n）。
 空间复杂度：虽然我们用到了递归，但是可以看到这个递归属于尾递归，所以编译器不需要不停地堆栈，所以空间复杂度为 O(1)。
+
+```javascript
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number}
+ */
+var findMedianSortedArrays = function (nums1, nums2) {
+  let m = nums1.length,
+    n = nums2.length;
+  let mid = (m + n + 1) >> 1;
+  let a = findK(0, 0, mid);
+  if ((m + n) & 1) return a;
+  let b = findK(0, 0, mid + 1);
+  function findK(i, j, k) {
+    if (i == m) return nums2[j + k - 1];
+    if (j == n) return nums1[i + k - 1];
+    if (k == 1) return nums1[i] < nums2[j] ? nums1[i] : nums2[j];
+
+    let a = Math.min(k >> 1, m - i);
+    let b = Math.min(k - a, n - j);
+    a = k - b;
+    if (nums1[i + a - 1] <= nums2[j + b - 1]) return findK(i + a, j, k - a);
+    return findK(i, j + b, k - b);
+  }
+  return (a + b) / 2;
+};
+```
+
+- python 3
+
+  ```javascript
+
+  class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        def findKth(i, j, k):
+            if i >= m:
+                return nums2[j + k - 1]
+            if j >= n:
+                return nums1[i + k - 1]
+            if k == 1:
+                return min(nums1[i], nums2[j])
+            midVal1 = nums1[i + k // 2 - 1] if i + k // 2 - 1 < m else inf
+            midVal2 = nums2[j + k // 2 - 1] if j + k // 2 - 1 < n else inf
+            if midVal1 < midVal2:
+                return findKth(i + k // 2, j, k - k // 2)
+            return findKth(i, j + k // 2, k - k // 2)
+
+        m, n = len(nums1), len(nums2)
+        left, right = (m + n + 1) // 2, (m + n + 2) // 2
+        return (findKth(0, 0, left) + findKth(0, 0, right)) / 2
+
+  ```
+
+- java
+
+```javascript
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int m = nums1.length;
+        int n = nums2.length;
+        int left = (m + n + 1) / 2;
+        int right = (m + n + 2) / 2;
+        return (findKth(nums1, 0, nums2, 0, left) + findKth(nums1, 0, nums2, 0, right)) / 2.0;
+    }
+
+    private int findKth(int[] nums1, int i, int[] nums2, int j, int k) {
+        if (i >= nums1.length) {
+            return nums2[j + k - 1];
+        }
+        if (j >= nums2.length) {
+            return nums1[i + k - 1];
+        }
+        if (k == 1) {
+            return Math.min(nums1[i], nums2[j]);
+        }
+        int midVal1 = (i + k / 2 - 1 < nums1.length) ? nums1[i + k / 2 - 1] : Integer.MAX_VALUE;
+        int midVal2 = (j + k / 2 - 1 < nums2.length) ? nums2[j + k / 2 - 1] : Integer.MAX_VALUE;
+        if (midVal1 < midVal2) {
+            return findKth(nums1, i + k / 2, nums2, j, k - k / 2);
+        }
+        return findKth(nums1, i, nums2, j + k / 2, k - k / 2);
+    }
+}
+
+```
+
+- c++
+
+  ```javascript
+  class Solution {
+  public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        int m = nums1.size();
+        int n = nums2.size();
+        int left = (m + n + 1) / 2;
+        int right = (m + n + 2) / 2;
+        return (findKth(nums1, 0, nums2, 0, left) + findKth(nums1, 0, nums2, 0, right)) / 2.0;
+    }
+
+    int findKth(vector<int>& nums1, int i, vector<int>& nums2, int j, int k) {
+        if (i >= nums1.size()) return nums2[j + k - 1];
+        if (j >= nums2.size()) return nums1[i + k - 1];
+        if (k == 1) return min(nums1[i], nums2[j]);
+        int midVal1 = i + k / 2 - 1 < nums1.size() ? nums1[i + k / 2 - 1] : INT_MAX;
+        int midVal2 = j + k / 2 - 1 < nums2.size() ? nums2[j + k / 2 - 1] : INT_MAX;
+        if (midVal1 < midVal2) return findKth(nums1, i + k / 2, nums2, j, k - k / 2);
+        return findKth(nums1, i, nums2, j + k / 2, k - k / 2);
+    }
+  };
+
+  ```
+
+- Go
+
+```javascript
+func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
+    m, n := len(nums1), len(nums2)
+    left, right := (m+n+1)/2, (m+n+2)/2
+    var findKth func(i, j, k int) int
+    findKth = func(i, j, k int) int {
+        if i >= m {
+            return nums2[j+k-1]
+        }
+        if j >= n {
+            return nums1[i+k-1]
+        }
+        if k == 1 {
+            return min(nums1[i], nums2[j])
+        }
+        midVal1 := math.MaxInt32
+        midVal2 := math.MaxInt32
+        if i+k/2-1 < m {
+            midVal1 = nums1[i+k/2-1]
+        }
+        if j+k/2-1 < n {
+            midVal2 = nums2[j+k/2-1]
+        }
+        if midVal1 < midVal2 {
+            return findKth(i+k/2, j, k-k/2)
+        }
+        return findKth(i, j+k/2, k-k/2)
+    }
+    return (float64(findKth(0, 0, left)) + float64(findKth(0, 0, right))) / 2.0
+}
+
+func min(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+```
 
 ### 解法三：优化
 
