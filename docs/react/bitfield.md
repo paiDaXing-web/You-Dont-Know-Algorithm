@@ -45,6 +45,14 @@ a>>k===parseInt(a/(2^k))===Math.floor(a/(2^k))
 
 ```
 
+- `^`
+
+```bash
+a = a + b;=== a ^= b;
+b = a - b;=== b ^= a;
+a = a - b;=== a ^= b;
+```
+
 ```bash
 The production A : A @ B, where @ is one of the bitwise operators in the productions above, is evaluated as follows:
 1. Let lref be the result of evaluating A.
